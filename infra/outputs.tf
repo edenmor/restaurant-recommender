@@ -6,6 +6,7 @@ output "storage_account_name" {
 output "storage_account_key" {
   description = "Access key for the Azure Storage Account"
   value       = module.database.storage_account_key
+  sensitive   = true
 }
 
 output "restaurants_table_name" {
