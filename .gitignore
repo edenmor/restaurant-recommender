@@ -1,0 +1,26 @@
+# Byte-compiled Python files
+*.pyc
+__pycache__/
+
+# Terraform files
+*.tfstate
+*.tfstate.backup
+
+# Local environment files
+.env
+*.log
+
+# Docker artifacts
+*.pid
+*.swp
+
+# Data files (optional if you want to exclude test data)
+data/*.json
+!data/restaurants.json  # Keep sample restaurants.json
+
+# VS Code settings
+.vscode/
+
+# System files
+.DS_Store
+Thumbs.db

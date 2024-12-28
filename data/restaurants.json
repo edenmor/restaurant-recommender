@@ -1,0 +1,19 @@
+[
+    {
+      "name": "Pizza Palace",
+      "style": "Italian",
+      "address": "123 Main St, Somewhere",
+      "openHour": "10:00",
+      "closeHour": "22:00",
+      "vegetarian": true
+    },
+    {
+      "name": "Sushi World",
+      "style": "Japanese",
+      "address": "456 Ocean Ave, Anywhere",
+      "openHour": "11:00",
+      "closeHour": "21:00",
+      "vegetarian": false
+    }
+  ]
+  

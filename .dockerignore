@@ -1,0 +1,17 @@
+# Git files
+.git
+.gitignore
+
+# Byte-compiled Python files
+*.pyc
+__pycache__/
+
+# Local environment files
+.env
+
+# Terraform files
+infra/*.tfstate
+infra/*.tfstate.backup
+
+# Test files
+tests/

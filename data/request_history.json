@@ -1,0 +1,62 @@
+[
+    {
+        "request": {
+            "style": "Italian",
+            "vegetarian": "true",
+            "time": "12:00"
+        },
+        "response": {
+            "name": "Pizza Palace",
+            "style": "Italian",
+            "address": "123 Main St, Somewhere",
+            "openHour": "10:00",
+            "closeHour": "22:00",
+            "vegetarian": true
+        }
+    },
+    {
+        "request": {
+            "style": "Italian",
+            "vegetarian": "true",
+            "time": "12:00"
+        },
+        "response": {
+            "name": "Pizza Palace",
+            "style": "Italian",
+            "address": "123 Main St, Somewhere",
+            "openHour": "10:00",
+            "closeHour": "22:00",
+            "vegetarian": true
+        }
+    },
+    {
+        "request": {
+            "style": "Italian",
+            "vegetarian": "true",
+            "time": "12:00"
+        },
+        "response": {
+            "name": "Pizza Palace",
+            "style": "Italian",
+            "address": "123 Main St, Somewhere",
+            "openHour": "10:00",
+            "closeHour": "22:00",
+            "vegetarian": true
+        }
+    },
+    {
+        "request": {
+            "style": "Italian",
+            "vegetarian": "true",
+            "time": "12:00"
+        },
+        "response": {
+            "name": "Pizza Palace",
+            "style": "Italian",
+            "address": "123 Main St, Somewhere",
+            "openHour": "10:00",
+            "closeHour": "22:00",
+            "vegetarian": true
+        }
+    }
+]
