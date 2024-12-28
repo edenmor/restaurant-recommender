@@ -9,6 +9,31 @@ on:
       - dev
 
 jobs:
+  build-and-test:
+    name: Build and Test
+    runs-on: ubuntu-latest
+
+    steps:
+    # Step 1: Checkout code
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    # Step 2: Set up Python
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: "3.9"
+
+    # Step 3: Install dependencies
+    - name: Install dependencies
+      run: |
+        pip install -r requirements.txt
+
+    # Step 4: Run tests (optional, ignored for now)
+    - name: Run tests
+      run: |
+        pytest tests/
+
   build-and-push:
     name: Build and Push Docker Image
     runs-on: ubuntu-latest
