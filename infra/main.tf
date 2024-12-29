@@ -32,6 +32,8 @@ module "app_service" {
   storage_account_name    = var.storage_account_name
   restaurants_table_name  = "restaurants"
   logs_table_name         = "requestlogs"
+
+  depends_on = [ azurerm_resource_group.main ]
 }
 
 
