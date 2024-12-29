@@ -22,7 +22,7 @@ resource "azurerm_app_service" "main" {
   site_config {
     always_on         = true
     app_command_line  = "gunicorn -w 4 -b 0.0.0.0:80 app.api:app"
-    linux_fx_version  = "DOCKER|edenmor1989/restaurant-recommender:portfixhealth"
+    linux_fx_version  = "DOCKER|edenmor1989/restaurant-recommender:latest"
   }
 
   app_settings = {

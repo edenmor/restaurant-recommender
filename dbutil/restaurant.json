@@ -1,0 +1,122 @@
+[
+    {
+        "PartitionKey": "restaurant",
+        "RowKey": "pizza-palace",
+        "name": "Pizza Palace",
+        "style": "Italian",
+        "address": "123 Main St",
+        "openHour": "10:00",
+        "closeHour": "22:00",
+        "vegetarian": "True"
+    },
+    {
+        "PartitionKey": "restaurant",
+        "RowKey": "sushi-world",
+        "name": "Sushi World",
+        "style": "Japanese",
+        "address": "456 Ocean Ave",
+        "openHour": "11:00",
+        "closeHour": "21:00",
+        "vegetarian": "False"
+    },
+    {
+        "PartitionKey": "restaurant",
+        "RowKey": "sushi-world",
+        "name": "Sushi World",
+        "style": "Japanese",
+        "address": "456 Ocean Ave",
+        "openHour": "11:00",
+        "closeHour": "21:00",
+        "vegetarian": "False"
+    },
+    {
+        "PartitionKey": "restaurant",
+        "RowKey": "burger-heaven",
+        "name": "Burger Heaven",
+        "style": "American",
+        "address": "789 Broadway",
+        "openHour": "09:00",
+        "closeHour": "23:00",
+        "vegetarian": "False"
+    },
+    {
+        "PartitionKey": "restaurant",
+        "RowKey": "green-garden",
+        "name": "Green Garden",
+        "style": "Vegan",
+        "address": "101 Park Lane",
+        "openHour": "10:00",
+        "closeHour": "20:00",
+        "vegetarian": "True"
+    },
+    {
+        "PartitionKey": "restaurant",
+        "RowKey": "spicy-house",
+        "name": "Spicy House",
+        "style": "Indian",
+        "address": "202 Curry Ave",
+        "openHour": "11:30",
+        "closeHour": "22:30",
+        "vegetarian": "True"
+    },
+    {
+        "PartitionKey": "restaurant",
+        "RowKey": "taco-town",
+        "name": "Taco Town",
+        "style": "Mexican",
+        "address": "303 Fiesta Blvd",
+        "openHour": "12:00",
+        "closeHour": "22:00",
+        "vegetarian": "True"
+    },
+    {
+        "PartitionKey": "restaurant",
+        "RowKey": "noodle-palace",
+        "name": "Noodle Palace",
+        "style": "Chinese",
+        "address": "404 Dragon St",
+        "openHour": "11:00",
+        "closeHour": "21:00",
+        "vegetarian": "False"
+    },
+    {
+        "PartitionKey": "restaurant",
+        "RowKey": "mediterranean-delights",
+        "name": "Mediterranean Delights",
+        "style": "Mediterranean",
+        "address": "505 Olive Rd",
+        "openHour": "11:00",
+        "closeHour": "22:00",
+        "vegetarian": "True"
+    },
+    {
+        "PartitionKey": "restaurant",
+        "RowKey": "bbq-barn",
+        "name": "BBQ Barn",
+        "style": "Barbecue",
+        "address": "606 Grill St",
+        "openHour": "12:00",
+        "closeHour": "22:30",
+        "vegetarian": "False"
+    },
+    {
+        "PartitionKey": "restaurant",
+        "RowKey": "french-bistro",
+        "name": "French Bistro",
+        "style": "French",
+        "address": "707 Paris Ave",
+        "openHour": "09:00",
+        "closeHour": "21:00",
+        "vegetarian": "True"
+    },
+    {
+        "PartitionKey": "restaurant",
+        "RowKey": "cozy-cafe",
+        "name": "Cozy Cafe",
+        "style": "Cafe",
+        "address": "808 Java Blvd",
+        "openHour": "07:00",
+        "closeHour": "18:00",
+        "vegetarian": "True"
+    }
+]
