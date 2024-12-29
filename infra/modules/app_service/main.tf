@@ -33,5 +33,4 @@ resource "azurerm_app_service" "main" {
     RESTAURANTS_TABLE_NAME              = var.restaurants_table_name
     LOGS_TABLE_NAME                     = var.logs_table_name
   }
-  depends_on = [ azurerm_app_service_plan.main ]
 }
