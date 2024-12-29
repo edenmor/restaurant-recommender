@@ -26,5 +26,6 @@ resource "azurerm_app_service" "main" {
 
   app_settings = {
     WEBSITES_ENABLE_APP_SERVICE_STORAGE = "false"
+    WEBSITES_PORT = "80"
   }
 }
