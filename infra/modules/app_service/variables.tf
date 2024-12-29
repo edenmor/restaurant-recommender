@@ -17,3 +17,7 @@ variable "app_image" {
   description = "Docker image for the app"
   type        = string
 }
+variable "storage_account_key" {}
+variable "storage_account_name" {}
+variable "restaurants_table_name" {}
+variable "logs_table_name" {}

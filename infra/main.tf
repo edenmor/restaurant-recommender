@@ -23,12 +23,17 @@ resource "azurerm_resource_group" "main" {
 
 # App Service module
 module "app_service" {
-  source              = "./modules/app_service"
-  resource_group_name = azurerm_resource_group.main.name
-  location            = azurerm_resource_group.main.location
-  app_name            = var.app_name
-  app_image           = var.app_image
+  source                  = "./modules/app_service"
+  app_image               = "edenmor1989/restaurant-recommender:amd64"
+  app_name                = var.app_name
+  resource_group_name     = var.resource_group_name
+  location                = var.location
+  storage_account_key     = module.database.storage_account_key
+  storage_account_name    = module.database.storage_account_name
+  restaurants_table_name  = "restaurants"
+  logs_table_name         = "requestlogs"
 }
+
 
 # Cosmos DB module
 module "database" {

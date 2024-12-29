@@ -9,6 +9,7 @@ resource "azurerm_app_service_plan" "main" {
     size = "B1"
   }
 }
+
 output "app_url" {
   value = azurerm_app_service.main.default_site_hostname
 }
@@ -19,13 +20,17 @@ resource "azurerm_app_service" "main" {
   resource_group_name = var.resource_group_name
   app_service_plan_id = azurerm_app_service_plan.main.id
   site_config {
-    always_on = true
-    app_command_line = "gunicorn -w 4 -b 0.0.0.0:5000 app.api:app"
-    linux_fx_version = "PYTHON:3.9"
+    always_on         = true
+    app_command_line  = "gunicorn -w 4 -b 0.0.0.0:80 app.api:app"
+    linux_fx_version  = "DOCKER|edenmor1989/restaurant-recommender:portfixhealth"
   }
 
   app_settings = {
     WEBSITES_ENABLE_APP_SERVICE_STORAGE = "false"
-    WEBSITES_PORT = "80"
+    WEBSITES_PORT                       = "80"
+    STORAGE_ACCOUNT_NAME                = var.storage_account_name
+    STORAGE_ACCOUNT_KEY                 = var.storage_account_key
+    RESTAURANTS_TABLE_NAME              = var.restaurants_table_name
+    LOGS_TABLE_NAME                     = var.logs_table_name
   }
 }
