@@ -22,3 +22,21 @@ variable "database_name" {
   description = "Name of the Cosmos DB database"
   type        = string
 }
+
+variable "storage_account_key" {
+  type = string
+}
+
+variable "storage_account_name" {
+  type = string
+}
+
+variable "restaurants_table_name" {
+  type = string
+  default = "restaurants"
+}
+
+variable "logs_table_name" {
+  type = string
+  default = "requestlogs"
+}
