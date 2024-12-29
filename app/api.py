@@ -3,7 +3,9 @@ from app.recommender import get_recommendation
 from app.database import log_request, get_restaurants
 
 app = Flask(__name__)
-
+@app.route('/health')
+def health():
+    return "Healthy", 200
 @app.route('/recommend', methods=['GET'])
 def recommend():
     # Extract query parameters
