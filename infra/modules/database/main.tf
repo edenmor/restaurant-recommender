@@ -1,10 +1,9 @@
 resource "azurerm_storage_account" "main" {
-  name                     = "${var.database_name}store"
+  name                     = "restaurantdbstore"
   resource_group_name      = var.resource_group_name
   location                 = var.location
   account_tier             = "Standard"
   account_replication_type = "LRS"
-
 }
 
 resource "azurerm_storage_table" "main" {
