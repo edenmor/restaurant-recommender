@@ -4,9 +4,8 @@ import os
 import json
 
 # Setup Azure Storage
-STORAGE_ACCOUNT_NAME = os.getenv("STORAGE_ACCOUNT_NAME", "restaurantdbstore")
-STORAGE_ACCOUNT_KEY = os.getenv(
-    "STORAGE_ACCOUNT_KEY", "jUmg7fpobew2Z4BrxUp24gb4ARuFIqHq0T8Fqz43MQvtCPKNPz80S40Kb+XzX/ydosR7GfLFDIAR+AStOldOew==")
+STORAGE_ACCOUNT_NAME = os.getenv("STORAGE_ACCOUNT_NAME")
+STORAGE_ACCOUNT_KEY = os.getenv("STORAGE_ACCOUNT_KEY")
 RESTAURANTS_TABLE = os.getenv("RESTAURANTS_TABLE_NAME", "restaurants")
 LOGS_TABLE = os.getenv("LOGS_TABLE_NAME", "requestlogs")
 
