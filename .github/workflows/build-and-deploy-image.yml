@@ -8,6 +8,10 @@ on:
     branches:
       - dev
 
+permissions:
+  id-token: write
+  contents: read   
+  
 jobs:
   build-and-test:
     name: Build and Test
@@ -70,7 +74,7 @@ jobs:
       uses: hashicorp/setup-terraform@v2
       with:
         terraform_version: 1.5.0
-        
+
     - name: Azure CLI Login
       uses: azure/login@v2
       with:
