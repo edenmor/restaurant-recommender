@@ -28,8 +28,8 @@ module "app_service" {
   app_name                = var.app_name
   resource_group_name     = var.resource_group_name
   location                = var.location
-  storage_account_key     = module.database.storage_account_key
-  storage_account_name    = module.database.storage_account_name
+  storage_account_key     = var.storage_account_key
+  storage_account_name    = var.storage_account_name
   restaurants_table_name  = "restaurants"
   logs_table_name         = "requestlogs"
 }
