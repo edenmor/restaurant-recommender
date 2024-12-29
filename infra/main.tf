@@ -36,9 +36,9 @@ module "app_service" {
 
 
 # Cosmos DB module
-module "database" {
-  source              = "./modules/database"
-  resource_group_name = azurerm_resource_group.main.name
-  location            = azurerm_resource_group.main.location
-  database_name       = var.database_name
-}
+# module "database" {
+#   source              = "./modules/database"
+#   resource_group_name = azurerm_resource_group.main.name
+#   location            = azurerm_resource_group.main.location
+#   database_name       = var.database_name
+# }

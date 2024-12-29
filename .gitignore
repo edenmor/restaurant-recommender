@@ -10,7 +10,7 @@ __pycache__/
 .terraform.lock.hcl
 *.tfstate
 *.tfstate.backup
-
+database/
 # Other ignored files
 .env
 __pycache__/
