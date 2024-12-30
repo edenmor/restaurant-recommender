@@ -1,14 +1,13 @@
 terraform {
   backend "azurerm" {
-    resource_group_name  = "restaurant-recommendation"
-    storage_account_name = "restaurantdbstore"
+    resource_group_name  = "restaurant-app-rg"
+    storage_account_name = "restaurantsa2024"
     container_name       = "states"
     key                  = "terraform.tfstate"
   }
 }
 
 
-# Provider Configuration
 provider "azurerm" {
   features {}
   subscription_id = var.azure_subscription_id
