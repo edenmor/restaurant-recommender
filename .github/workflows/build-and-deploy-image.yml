@@ -89,7 +89,7 @@ jobs:
 
     # Step 4: Apply Terraform configuration
     - name: Terraform Apply
-      run: terraform apply -auto-approve -var="storage_account_key=${{ secrets.AZURE_CLIENT_SECRET }}" -var="storage_account_name=${{ secrets.AZURE_CLIENT_ID }}"
+      run: terraform apply -auto-approve -var="storage_account_key=${{ secrets.AZURE_CLIENT_SECRET }}"
       working-directory: infra/
       env:
         ARM_CLIENT_ID: ${{ secrets.AZURE_CLIENT_ID }}

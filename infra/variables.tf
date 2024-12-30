@@ -29,6 +29,7 @@ variable "storage_account_key" {
 
 variable "storage_account_name" {
   type = string
+  default = "restaurantdbstore"
 }
 
 variable "restaurants_table_name" {
