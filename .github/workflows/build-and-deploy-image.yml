@@ -4,6 +4,9 @@ on:
   push:
     paths:
       - 'app/**'
+      - 'data/**'
+      - 'dbutil/**'
+      - 'tests/**'
       - 'Dockerfile'
       - 'requirements.txt'
     branches:
