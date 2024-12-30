@@ -1,11 +1,11 @@
 name: Infrastructure Pipeline
 
 on:
-#   push:
-#     paths:
-#       - 'infra/**'
-#     branches:
-#       - dev
+  push:
+    paths:
+      - 'infra/**'
+    branches:
+      - dev
 jobs:
   terraform:
     runs-on: ubuntu-latest
