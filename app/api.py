@@ -9,6 +9,9 @@ app = Flask(__name__)
 @app.route('/health')
 def health():
     return "Healthy", 200
+@app.route('/test')
+def health():
+    return "test ok!", 200
 
 
 @app.route('/insert', methods=['POST'])
