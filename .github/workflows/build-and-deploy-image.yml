@@ -1,4 +1,4 @@
-name: CI/CD Pipeline
+name: App Deployment Pipeline
 
 on:
   push:
@@ -10,100 +10,53 @@ on:
 
 permissions:
   id-token: write
-  contents: read   
+  contents: read
 
 jobs:
-  build-and-test:
-    name: Build and Test
-    runs-on: ubuntu-latest
-
-    steps:
-    - name: Checkout code
-      uses: actions/checkout@v3
-
-    - name: Set up Python
-      uses: actions/setup-python@v4
-      with:
-        python-version: "3.9"
-
-    - name: Install dependencies
-      run: |
-        pip install -r requirements.txt
-
-    - name: Run tests
-      run: |
-        pytest tests/
-
   build-and-push:
-    needs: build-and-test
     name: Build and Push Docker Image
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v4
+    # Step 1: Checkout code
+    - name: Checkout code
+      uses: actions/checkout@v3
 
-    - name: Build the Docker Image
+    # Step 2: Build the Docker image
+    - name: Build Docker Image
       run: |
         docker build . --file Dockerfile --tag ${{ secrets.DOCKERHUB_USERNAME }}/restaurant-recommender:${{ github.run_id }} \
         --tag ${{ secrets.DOCKERHUB_USERNAME }}/restaurant-recommender:latest
 
+    # Step 3: Login to Docker Hub
     - name: Login to Docker Hub
       run: echo "${{ secrets.DOCKERHUB_TOKEN }}" | docker login -u "${{ secrets.DOCKERHUB_USERNAME }}" --password-stdin
 
+    # Step 4: Push Docker image to Docker Hub
     - name: Push Docker Image
       run: docker push ${{ secrets.DOCKERHUB_USERNAME }}/restaurant-recommender --all-tags
 
-  terraform-deploy:
-    name: Deploy to Azure
+  update-app-service:
+    name: Update Azure App Service
     runs-on: ubuntu-latest
     needs: build-and-push
 
     steps:
-    # Step 1: Checkout code
-    - uses: actions/checkout@v4
-
-    # Step 2: Set up Terraform
-    - name: Set up Terraform
-      uses: hashicorp/setup-terraform@v2
-      with:
-        terraform_version: 1.5.0
-
-    - name: Azure CLI Login
+    # Step 1: Azure CLI Login
+    - name: Azure Login
       uses: azure/login@v2
       with:
         client-id: ${{ secrets.AZURE_CLIENT_ID }}
         tenant-id: ${{ secrets.AZURE_TENANT_ID }}
         subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
 
-    # Step 3: Initialize Terraform
-    - name: Terraform Init
-      run: terraform init
-      working-directory: infra/
-      env:
-        ARM_CLIENT_ID: ${{ secrets.AZURE_CLIENT_ID }}
-        ARM_CLIENT_SECRET: ${{ secrets.AZURE_CLIENT_SECRET }}
-        ARM_SUBSCRIPTION_ID: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
-        ARM_TENANT_ID: ${{ secrets.AZURE_TENANT_ID }}
-    # Step 4: Apply Terraform configuration
-    - name: Terraform Apply
-      run: terraform apply -auto-approve -var="storage_account_key=${{ secrets.AZURE_CLIENT_SECRET }}"
-      working-directory: infra/
-      env:
-        ARM_CLIENT_ID: ${{ secrets.AZURE_CLIENT_ID }}
-        ARM_CLIENT_SECRET: ${{ secrets.AZURE_CLIENT_SECRET }}
-        ARM_SUBSCRIPTION_ID: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
-        ARM_TENANT_ID: ${{ secrets.AZURE_TENANT_ID }}
-
-    - name: store state
-      run: upload file terraform.tfstate
-
-    - name: Azure CLI script
-      uses: azure/cli@v2
-      with:
-        azcliversion: latest
-        inlineScript: |
-          az storage blob upload \
-            --account-name restaurantdbstore \
-            --container-name states \
-            --file ./infra/terraform.tfstate \
-            --name terraform.tfstate
+    # Step 2: Update App Service Image
+    - name: Update Azure App Service Image
+      run: |
+        az webapp config container set \
+          --name "restaurant-recommendation-app" \
+          --resource-group "restaurant-recommendation" \
+          --docker-custom-image-name "${{ secrets.DOCKERHUB_USERNAME }}/restaurant-recommender:latest" \
+          --docker-registry-server-url "https://index.docker.io/v1/" \
+          --docker-registry-server-user "${{ secrets.DOCKERHUB_USERNAME }}" \
+          --docker-registry-server-password "${{ secrets.DOCKERHUB_TOKEN }}"
