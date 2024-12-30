@@ -1,20 +1,16 @@
-# output "storage_account_name" {
-#   description = "Name of the Azure Storage Account"
-#   value       = module.database.storage_account_name
-# }
 
-# output "storage_account_key" {
-#   description = "Access key for the Azure Storage Account"
-#   value       = module.database.storage_account_key
-#   sensitive   = true
-# }
 
-# output "restaurants_table_name" {
-#   description = "Name of the Restaurants Table"
-#   value       = module.database.restaurants_table_name
-# }
+output "storage_account_name" {
+  description = "The name of the storage account"
+  value       = azurerm_storage_account.main.name
+}
 
-# output "logs_table_name" {
-#   description = "Name of the Logs Table"
-#   value       = module.database.logs_table_name
-# }
+output "restaurants_table_name" {
+  description = "The name of the restaurants table"
+  value       = var.restaurants_table_name
+}
+
+output "logs_table_name" {
+  description = "The name of the logs table"
+  value       = var.logs_table_name
+}

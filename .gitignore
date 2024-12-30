@@ -11,6 +11,7 @@ __pycache__/
 *.tfstate
 *.tfstate.backup
 database/
+bkpinfra
 # Other ignored files
 .env
 __pycache__/
