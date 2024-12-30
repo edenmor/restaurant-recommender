@@ -10,7 +10,7 @@ app = Flask(__name__)
 def health():
     return "Healthy", 200
 @app.route('/test')
-def health():
+def test():
     return "test ok!", 200
 
 

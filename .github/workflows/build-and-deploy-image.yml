@@ -2,6 +2,10 @@ name: App Deployment Pipeline
 
 on:
   push:
+    paths:
+      - 'app/**'
+      - 'Dockerfile'
+      - 'requirements.txt'
     branches:
       - dev
   pull_request:
@@ -45,7 +49,7 @@ jobs:
 
     - name: Build Docker Image
       run: |
-        docker build . --file Dockerfile --tag ${{ secrets.DOCKERHUB_USERNAME }}/restaurant-recommender:${{ github.run_id }} \
+        docker build --platform=linux/amd64 . --file Dockerfile --tag ${{ secrets.DOCKERHUB_USERNAME }}/restaurant-recommender:${{ github.run_id }} \
         --tag ${{ secrets.DOCKERHUB_USERNAME }}/restaurant-recommender:latest
 
 
