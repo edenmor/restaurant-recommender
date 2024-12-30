@@ -81,3 +81,8 @@ jobs:
           --docker-registry-server-url "https://index.docker.io/v1/" \
           --docker-registry-server-user "${{ secrets.DOCKERHUB_USERNAME }}" \
           --docker-registry-server-password "${{ secrets.DOCKERHUB_TOKEN }}"
+    - name: Update Azure App Service Image
+      run: |
+          az webapp restart \
+            --name "restaurant-recommendation-app" \
+            --resource-group "restaurant-recommendation" 
