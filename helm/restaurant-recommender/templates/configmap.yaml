@@ -1,0 +1,8 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ .Release.Name }}-config
+data:
+  STORAGE_ACCOUNT_NAME: {{ .Values.env.STORAGE_ACCOUNT_NAME }}
+  RESTAURANTS_TABLE_NAME: {{ .Values.env.RESTAURANTS_TABLE_NAME }}
+  LOGS_TABLE_NAME: {{ .Values.env.LOGS_TABLE_NAME }}

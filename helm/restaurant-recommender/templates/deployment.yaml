@@ -1,0 +1,41 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Release.Name }}
+  labels:
+    app: {{ .Chart.Name }}
+spec:
+  replicas: {{ .Values.replicaCount }}
+  selector:
+    matchLabels:
+      app: {{ .Chart.Name }}
+  template:
+    metadata:
+      labels:
+        app: {{ .Chart.Name }}
+    spec:
+      containers:
+      - name: {{ .Chart.Name }}
+        image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+        imagePullPolicy: {{ .Values.image.pullPolicy }}
+        ports:
+        - containerPort: 80
+        env:
+        - name: STORAGE_ACCOUNT_NAME
+          value: "{{ .Values.env.STORAGE_ACCOUNT_NAME }}"
+        - name: STORAGE_ACCOUNT_KEY
+          valueFrom:
+            secretKeyRef:
+              name: storage-secrets
+              key: storageAccountKey
+        - name: RESTAURANTS_TABLE_NAME
+          value: "{{ .Values.env.RESTAURANTS_TABLE_NAME }}"
+        - name: LOGS_TABLE_NAME
+          value: "{{ .Values.env.LOGS_TABLE_NAME }}"
+        resources:
+          limits:
+            cpu: {{ .Values.resources.limits.cpu }}
+            memory: {{ .Values.resources.limits.memory }}
+          requests:
+            cpu: {{ .Values.resources.requests.cpu }}
+            memory: {{ .Values.resources.requests.memory }}
