@@ -24,10 +24,7 @@ spec:
         - name: STORAGE_ACCOUNT_NAME
           value: "{{ .Values.env.STORAGE_ACCOUNT_NAME }}"
         - name: STORAGE_ACCOUNT_KEY
-          valueFrom:
-            secretKeyRef:
-              name: storage-secrets
-              key: storageAccountKey
+          value: "{{ .Values.env.STORAGE_ACCOUNT_KEY }}"
         - name: RESTAURANTS_TABLE_NAME
           value: "{{ .Values.env.RESTAURANTS_TABLE_NAME }}"
         - name: LOGS_TABLE_NAME

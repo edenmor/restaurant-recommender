@@ -8,30 +8,16 @@ variable "location" {
   type        = string
 }
 
-variable "app_name" {
-  description = "The name of the app"
-  type        = string
-}
-
-variable "app_image" {
-  description = "The Docker image for the app"
-  type        = string
-}
-
 variable "storage_account_name" {
   description = "The name of the storage account"
   type        = string
 }
 
-variable "restaurants_table_name" {
-  description = "The name of the restaurants table"
+variable "container_name" {
+  description = "The name of the blob container"
   type        = string
 }
 
-variable "logs_table_name" {
-  description = "The name of the logs table"
-  type        = string
-}
 variable "azure_client_id" {
   description = "Azure Client ID"
   type        = string
